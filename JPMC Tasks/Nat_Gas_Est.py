@@ -51,7 +51,7 @@ future_dates = pd.date_range(
 future_date_nums = (future_dates - df['Dates'].min()).days.values.reshape(-1,1)
 
 #predicting future prices
-future_prices = model.predict(future_date_nums)
+future_prices = model.predict(pd.DataFrame(future_date_nums, columns=['DateNum']))
 
 #creating new data frame to display
 future_df = pd.DataFrame({
