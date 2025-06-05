@@ -64,7 +64,7 @@ print(future_df.head(10))
 
 
 # testing
-test_dates = ["2021-03-15", "2022-07-10", "2023-12-01"]
+test_dates = ["2025-03-15", "2025-07-10", "2025-09-01"]
 
 for date in test_dates:
     price = estimate_price_interpolated(date)
