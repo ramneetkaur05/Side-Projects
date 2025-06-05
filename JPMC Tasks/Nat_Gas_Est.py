@@ -1,22 +1,13 @@
-# Converting Dates to proper datetime format and plotting natural gas prices
-# This script uses the Nat_Gas CSV file with 'Dates' and 'Prices' columns.
+# Converting Dates to proper datetime format
+    # This script uses the Nat_Gas CSV file with 'Dates' and 'Prices' columns.
 
 import pandas as pd
-import matplotlib.pyplot as plt  # this is the graphing tool
 
 # Reload the CSV file
 file_path = "JPMC Tasks/Nat_Gas.csv"
 df = pd.read_csv(file_path)
-
 df['Dates'] = pd.to_datetime(df['Dates'], format="%m/%d/%y")
 
-plt.figure(figsize=(10, 5))  # make the plot big
-plt.plot(df['Dates'], df['Prices'], marker='o')  # draw the line with dots on each point
-plt.title("Natural Gas Prices Over Time")  # add a title
-plt.xlabel("Date")  # label the X-axis
-plt.ylabel("Price")  # label the Y-axis
-plt.grid(True)  # add gridlines to help see the values
-plt.show()  # show the graph
 
 #INterpolating data
 
@@ -35,6 +26,33 @@ def estimate_price_interpolated(date_str):
     date_num = (date - df['Dates'].min()).days
     return float(interpolator(date_num))
 
+
+#Extroplating data
+    # Using linear regression model (oct 2024 - sept 2025)
+
+from sklearn.linear_model import LinearRegression
+
+#Preparing data
+X = df[['DateNum']] #input = actual # of days since first date (2D)
+y = df[['Prices']]
+
+model = LinearRegression()
+model.fit(X,y) # model can now predict gas proces based on a day Number
+
+# prediction of next year
+last_date = df['Dates'].max() # finds last date -> stores
+future_dates = pd.date_range(
+    start = last_date + pd.Timedelta(days=1), # starts in Oct 1 , 2024
+    periods=365 #makes 365 future dates
+)
+
+# converting numbers for prediction
+future_date_nums = (future_dates - df['Dates'].min()).days.values.reshape(-1,1)
+
+
+
+
+# testing
 test_dates = ["2021-03-15", "2022-07-10", "2023-12-01"]
 
 for date in test_dates:
