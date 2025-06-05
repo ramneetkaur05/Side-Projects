@@ -34,3 +34,9 @@ def estimate_price_interpolated(date_str):
     date = pd.to_datetime(date_str)
     date_num = (date - df['Dates'].min()).days
     return float(interpolator(date_num))
+
+test_dates = ["2021-03-15", "2022-07-10", "2023-12-01"]
+
+for date in test_dates:
+    price = estimate_price_interpolated(date)
+    print(f"Estimated price on {date}: ${price:.2f}")
