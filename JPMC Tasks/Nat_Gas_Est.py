@@ -39,7 +39,7 @@ y = df[['Prices']]
 model = LinearRegression()
 model.fit(X,y) # model can now predict gas proces based on a day Number
 
-# prediction of next year
+# setting up dates for next year
 last_date = df['Dates'].max() # finds last date -> stores
 future_dates = pd.date_range(
     start = last_date + pd.Timedelta(days=1), # starts in Oct 1 , 2024
@@ -49,6 +49,17 @@ future_dates = pd.date_range(
 # converting numbers for prediction
 future_date_nums = (future_dates - df['Dates'].min()).days.values.reshape(-1,1)
 
+#predicting future prices
+future_prices = model.predict(future_dates)
+
+#creating new data frame to display
+future_df = pd.DataFrame({
+    'Date': future_dates,
+    'Predicted Price': future_prices
+})
+
+#printing result
+print(future_df.head(10))
 
 
 
