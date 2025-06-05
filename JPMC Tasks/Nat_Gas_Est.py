@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt  # this is the graphing tool
 
 # Reload the CSV file
-file_path = "/ramneetkaur/Documents/JP Morgan Tasks/Nat_Gas.csv"
+file_path = "Nat_Gas.csv"
 df = pd.read_csv(file_path)
 
 df['Dates'] = pd.to_datetime(df['Dates'])
@@ -17,6 +17,8 @@ plt.xlabel("Date")  # label the X-axis
 plt.ylabel("Price")  # label the Y-axis
 plt.grid(True)  # add gridlines to help see the values
 plt.show()  # show the graph
+
+#INterpolating data
 
 from scipy.interpolate import interp1d
 import numpy as np
