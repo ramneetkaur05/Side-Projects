@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt  # this is the graphing tool
 file_path = "JPMC Tasks/Nat_Gas.csv"
 df = pd.read_csv(file_path)
 
-df['Dates'] = pd.to_datetime(df['Dates'])
+df['Dates'] = pd.to_datetime(df['Dates'], format="%m/%d/%y")
 
 plt.figure(figsize=(10, 5))  # make the plot big
 plt.plot(df['Dates'], df['Prices'], marker='o')  # draw the line with dots on each point
