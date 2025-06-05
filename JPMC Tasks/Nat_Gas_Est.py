@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt  # this is the graphing tool
 
 # Reload the CSV file
-file_path = "Nat_Gas.csv"
+file_path = "JPMC Tasks/Nat_Gas.csv"
 df = pd.read_csv(file_path)
 
 df['Dates'] = pd.to_datetime(df['Dates'])
