@@ -4,7 +4,8 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 #Loading data
-df = pd.read_csv("Customer_Loan_Data.csv")
+file_path = "JPMC Tasks/Customer_Loan_Data.csv"
+df = pd.read_csv(file_path)
 df = df.dropna() #remove rows with missing values
 
 # Define features and target
