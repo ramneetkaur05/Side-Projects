@@ -54,3 +54,19 @@ def price_storage_contract(
         if i < len(all_dates) - 1:
             total_value -= current_volume * storage_cost_per_unit
     return total_value
+
+
+
+injection_dates = ['2025-03-15', '2025-07-10']
+withdrawal_dates = ['2025-09-01']
+
+contract_value = price_storage_contract(
+    injection_dates,
+    withdrawal_dates,
+    injection_rate=100,
+    withdrawal_rate=100,
+    max_volume=200,
+    storage_cost_per_unit=0.05
+)
+
+print(f"Estimated contract value: ${contract_value:.2f}")
