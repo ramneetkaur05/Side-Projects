@@ -46,5 +46,11 @@ def price_storage_contract(
             #calc how much you can withdraw
             #dec. stored gas
             #add mney to totl val.
-        if date_str in withdrawl_dates:
-            withdraw_volume = min(withdrawl)
+        if date_str in withdrawal_dates:
+            withdraw_volume = min(withdrawal_rate, current_volume)
+            current_volume -= withdraw_volume
+            total_value += withdraw_volume * price
+
+        if i < len(all_dates) - 1:
+            total_value -= current_volume * storage_cost_per_unit
+    return total_value
