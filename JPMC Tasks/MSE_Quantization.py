@@ -65,6 +65,22 @@ def assign_ratings(data, bucket_edges):
         1. CHECKINNG AVERAGE FICO SCORE/RATING
         2. CHECKING DEFAULT/RATING
         3. PRINT HOW MANY BORROWERS FALL INTO EACH RATING
-        
+
 """
 
+#TESTING 1
+for rating in sorted(df['fico_rating'].unique()):
+    avg_score = df[df['fico_rating'] == rating]['fico_score'].mean()
+    print(f"Rating {rating}: Avg FICO = {avg_score:.2f}")
+
+#TESTING 2
+for rating in sorted(df['fico_rating'].unique()):
+    group = df[df['fico_rating'] == rating]
+    default_rate = group['default'].mean()
+    print(f"Rating {rating}: Default Rate = {default_rate:.2%}")
+
+#TESTING 3
+for rating in sorted(df['fico_rating'].unique()):
+    group = df[df['fico_rating'] == rating]
+    default_rate = group['default'].mean()
+    print(f"Rating {rating}: Default Rate = {default_rate:.2%}")
