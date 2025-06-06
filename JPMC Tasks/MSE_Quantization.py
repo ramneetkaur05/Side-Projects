@@ -69,18 +69,16 @@ def assign_ratings(data, bucket_edges):
 """
 
 #TESTING 1
-for rating in sorted(df['fico_rating'].unique()):
-    avg_score = df[df['fico_rating'] == rating]['fico_score'].mean()
+for rating in sorted(df['fico_score'].unique()):
+    avg_score = df[df['fico_score'] == rating]['fico_score'].mean()
     print(f"Rating {rating}: Avg FICO = {avg_score:.2f}")
 
 #TESTING 2
-for rating in sorted(df['fico_rating'].unique()):
-    group = df[df['fico_rating'] == rating]
+for rating in sorted(df['fico_score'].unique()):
+    group = df[df['fico_score'] == rating]
     default_rate = group['default'].mean()
     print(f"Rating {rating}: Default Rate = {default_rate:.2%}")
 
 #TESTING 3
-for rating in sorted(df['fico_rating'].unique()):
-    group = df[df['fico_rating'] == rating]
-    default_rate = group['default'].mean()
-    print(f"Rating {rating}: Default Rate = {default_rate:.2%}")
+print(df['fico_score'].value_counts().sort_index())
+
