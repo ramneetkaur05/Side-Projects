@@ -3,9 +3,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-#Loading data
-file_path = "JPMC Tasks/Customer_Loan_Data.csv"
-df = pd.read_csv(file_path)
+x
 df = df.dropna() #remove rows with missing values
 
 # Define features and target
